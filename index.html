@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <title>Vente de Tiramisu - Fait Maison</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #f8f1e9;
+      margin: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(rgba(92,51,23,0.75), rgba(92,51,23,0.75)), 
+                  url('https://images.unsplash.com/photo-1571877227200-7f9c4e8f2b5f?w=1600') center/cover no-repeat;
+      color: white;
+      padding: 85px 20px 55px;   /* ← Raccourci */
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.1rem;
+      margin: 0;
+      color: #f8f1e9;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .subtitle {
+      font-size: 1.6rem;
+      color: #f8f1e9;
+      margin-top: 10px;
+      opacity: 0.95;
+      letter-spacing: 1.5px;
+    }
+    .delivery-info {
+      font-size: 1.25rem;
+      color: #f8f1e9;
+      margin-top: 16px;
+      opacity: 0.95;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .price-box, .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 35px;
+      margin-bottom: 30px;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .price-item {
+      background: #f8f1e9;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    select, input {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      background-color: #f8f1e9;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      margin-top: 8px;
+      box-sizing: border-box;
+    }
+    select:focus, input:focus {
+      outline: none;
+      background-color: #f0e6d8;
+    }
+
+    .custom-checkbox {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .checkmark {
+      width: 26px;
+      height: 26px;
+      border: 3px solid #5C3317;
+      border-radius: 8px;
+      margin-right: 12px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .custom-checkbox input:checked + .checkmark {
+      background-color: #5C3317;
+      border-color: #5C3317;
+    }
+    .custom-checkbox input:checked + .checkmark:after {
+      content: "✔";
+      position: absolute;
+      color: white;
+      font-size: 18px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .validate-btn {
+      width: 100%;
+      background-color: #5C3317;
+      color: white;
+      padding: 20px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .validate-btn:hover {
+      background-color: #7A4A2E;
+    }
+
+    .recap, .thank-you-screen {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 50px 40px;
+      margin-top: 40px;
+      text-align: center;
+      display: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    .recap.show, .thank-you-screen.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 3.1rem; }
+      .subtitle { font-size: 1.35rem; }
+      .delivery-info { font-size: 1.15rem; }
+      .hero { padding: 70px 15px 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Vente de Tiramisu</h1>
+    <p class="subtitle">Fait maison et personnalisée</p>
+    <p class="delivery-info">🚚 Livraison disponible uniquement à Cesson et Vers-Saint-Denis</p>
+  </header>
+
+  <div class="container">
+
+    <div class="price-box">
+      <h2 style="color:#5C3317; margin-bottom:15px;">Nos prix</h2>
+      <div class="price-grid">
+        <div class="price-item">Nature — <strong>8,90€</strong></div>
+        <div class="price-item">Spéculoos — <strong>9,90€</strong></div>
+        <div class="price-item">Nutella — <strong>10,90€</strong></div>
+        <div class="price-item">Bueno — <strong>11,90€</strong></div>
+      </div>
+      <p style="margin-top:15px; font-size:0.95rem; color:#666;">Domicile : +2€</p>
+    </div>
+
+    <h2 style="text-align:center; color:#5C3317; margin:40px 0 20px;">Passe ta commande</h2>
+
+    <div class="card">
+      <form id="orderForm" class="space-y-8">
+        <div>
+          <label class="block text-lg font-medium">Parfum</label>
+          <select id="flavor" required>
+            <option value="">Choisir le parfum</option>
+            <option value="Tiramisu nature">Tiramisu nature</option>
+            <option value="Tiramisu Spéculos">Tiramisu Spéculos</option>
+            <option value="Tiramisu Nutella">Tiramisu Nutella</option>
+            <option value="Tiramisu Bueno">Tiramisu Bueno</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-lg font-medium">Imbibage du biscuit</label>
+          <select id="soak" required>
+            <option value="">Choisir</option>
+            <option value="Café">Café (traditionnel)</option>
+            <option value="Lait">Lait (plus doux)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-lg font-medium">Lieu de rendez-vous</label>
+          <select id="location" required>
+            <option value="">Choisir le lieu</option>
+            <option value="Carrefour City">Carrefour City</option>
+            <option value="Devant le collège">Devant le collège</option>
+            <option value="Domicile (+2€)">Domicile (+2€)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-lg font-medium">Ton prénom / pseudo</label>
+          <input type="text" id="name" placeholder="Ex: Marie" required>
+        </div>
+
+        <div>
+          <label class="block text-lg font-medium">Téléphone ou email</label>
+          <input type="text" id="contact" placeholder="06 XX XX XX XX ou ton email" required>
+        </div>
+
+        <div>
+          <label class="block text-lg font-medium">Code promo (facultatif)</label>
+          <input type="text" id="promo" placeholder="Entrez votre code promo">
+        </div>
+
+        <div style="margin-top: 10px;">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="cuillere">
+            <span class="checkmark"></span>
+            Cuillère incluse
+          </label>
+        </div>
+      </form>
+    </div>
+
+    <div class="card" style="text-align: center; padding: 35px;">
+      <button onclick="validateOrder()" class="validate-btn">Valider</button>
+    </div>
+
+    <div id="recap" class="recap"></div>
+    <div id="thankYouScreen" class="thank-you-screen"></div>
+  </div>
+
+<script>
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfmdVkD9tyqiqFMRV9qZcHRoDl8-h309HpU36lIdzvvos9dyA/formResponse";
+
+const ENTRY_IDS = {
+  flavor:   "entry.1808802300",
+  soak:     "entry.662090014",
+  location: "entry.1476462303",
+  name:     "entry.2057599000",
+  contact:  "entry.1616067354",
+  promo:    "entry.2105134373",
+  cuillere: "entry.2075741612",
+  price:    "entry.218866345"
+};
+
+const SECRET_PROMO = "Ça Régale !";
+
+async function submitToGoogleForm(data) {
+  const formData = new FormData();
+  Object.keys(data).forEach(key => {
+    if (ENTRY_IDS[key]) formData.append(ENTRY_IDS[key], data[key]);
+  });
+  try {
+    await fetch(GOOGLE_FORM_URL, { method: "POST", body: formData, mode: "no-cors" });
+  } catch (e) {}
+}
+
+function validateOrder() {
+  const form = document.getElementById('orderForm');
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const flavor = document.getElementById('flavor').value;
+  const soak = document.getElementById('soak').value;
+  const location = document.getElementById('location').value;
+  const name = document.getElementById('name').value;
+  const contact = document.getElementById('contact').value;
+  const promo = document.getElementById('promo').value.trim();
+  const cuillere = document.getElementById('cuillere').checked ? "Option 1" : "Non";
+
+  const flavorPrices = {
+    "Tiramisu nature": 8.90,
+    "Tiramisu Spéculos": 9.90,
+    "Tiramisu Nutella": 10.90,
+    "Tiramisu Bueno": 11.90
+  };
+
+  let finalPrice = flavorPrices[flavor] || 0;
+  if (location === "Domicile (+2€)") finalPrice += 2;
+  if (promo === SECRET_PROMO) finalPrice = Math.max(0, finalPrice - 1);
+
+  submitToGoogleForm({
+    flavor, soak, location, name, contact, promo, cuillere,
+    price: finalPrice.toFixed(2) + " €"
+  });
+
+  const recap = document.getElementById('recap');
+  recap.innerHTML = `
+    <h2 style="color:#5C3317; font-size:2.3rem; margin-bottom:25px;">Récapitulatif de ta commande</h2>
+    <p style="font-size:1.45rem; margin:12px 0;"><strong>Parfum :</strong> ${flavor}</p>
+    <p style="font-size:1.45rem; margin:12px 0;"><strong>Imbibage :</strong> ${soak}</p>
+    <p style="font-size:1.45rem; margin:12px 0;"><strong>Lieu :</strong> ${location}</p>
+    <p style="font-size:1.45rem; margin:12px 0;"><strong>Nom :</strong> ${name}</p>
+    <p style="font-size:1.45rem; margin:12px 0;"><strong>Contact :</strong> ${contact}</p>
+    <p style="font-size:1.45rem; margin:12px 0;"><strong>Cuillère incluse :</strong> ${cuillere}</p>
+    
+    <p style="font-size:1.7rem; margin:30px 0; color:#5C3317;">Total : <strong>${finalPrice.toFixed(2)} €</strong></p>
+    ${promo === SECRET_PROMO ? '<p style="color:#16a34a;">Code promo appliqué (-1€)</p>' : ''}
+    
+    <button onclick="showThankYou()" style="background:#5C3317; color:white; border:none; padding:18px 50px; font-size:1.35rem; border-radius:16px; cursor:pointer; margin-top:30px;">
+      Confirmer la commande
+    </button>
+  `;
+  recap.style.display = "block";
+  recap.classList.add('show');
+  recap.scrollIntoView({ behavior: "smooth" });
+}
+
+function showThankYou() {
+  document.getElementById('recap').style.display = "none";
+  const thankScreen = document.getElementById('thankYouScreen');
+  thankScreen.innerHTML = `
+    <h2 style="color:#5C3317; font-size:2.8rem; margin-bottom:20px;">Merci de vos achats !</h2>
+    <p style="font-size:1.5rem; margin:25px 0;">Votre commande a bien été enregistrée.</p>
+    <button onclick="window.location.reload()" style="background:#5C3317; color:white; border:none; padding:18px 45px; font-size:1.3rem; border-radius:16px; cursor:pointer;">
+      Continuer vos achats
+    </button>
+  `;
+  thankScreen.style.display = "block";
+  thankScreen.classList.add('show');
+}
+</script>
+</body>
+</html>
